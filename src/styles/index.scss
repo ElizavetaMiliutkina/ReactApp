@@ -1,0 +1,24 @@
+@import 'themes/dark';
+@import 'themes/light';
+@import 'variables/global';
+@import 'reset';
+
+#root{
+  padding: 0!important;
+  margin: 0!important;
+  max-width: 100%!important;
+}
+.app {
+  font: var(--font-m);
+  color: var(--primary-color);
+  background: var(--bg-color);
+  min-height: 100vh;
+}
+
+.wrapper-content {
+display: flex;
+}
+.main-content {
+flex-grow: 1;
+}
+
