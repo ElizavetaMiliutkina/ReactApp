@@ -11,7 +11,10 @@ export default [
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     languageOptions: {
-      globals: globals.browser,
+      globals: {
+        ...globals.browser, // добавляем globals для браузера
+        ...globals.jest, // добавляем globals для Jest
+      },
     },
     rules: {
       "no-unused-vars": "warn",
