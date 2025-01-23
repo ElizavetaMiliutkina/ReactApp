@@ -4,7 +4,7 @@ import { useTheme } from "@/shared/theme/useTheme.ts";
 import { ReactComponent as IconDark } from "@/assets/theme-dark.svg";
 import { ReactComponent as IconLight } from "@/assets/theme-light.svg";
 import { Theme } from "@/shared/theme/ThemeContext.ts";
-import { themeButton, UiButton } from "@/components/ui/UiButton/UiButton.tsx";
+import { themeButton, UiButton } from "@/components/ui/Button/UiButton.tsx";
 
 interface ThemeSwitcherProps {
     className?: string;
