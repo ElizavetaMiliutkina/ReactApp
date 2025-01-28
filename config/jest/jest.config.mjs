@@ -1,5 +1,3 @@
-import path from 'path';
-
 export default {
   clearMocks: true,
   testEnvironment: 'jest-environment-jsdom',
@@ -40,5 +38,7 @@ export default {
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
+    '\\.(css|scss)$': 'identity-obj-proxy'
   },
+  setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts']
 };

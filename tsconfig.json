@@ -13,9 +13,12 @@
       "@/*": ["src/*"]
     },
     "jsx": "react-jsx",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": [
-    "src/@types/**/*.d.ts"
+    "src/@types/**/*.d.ts",
+    "./config/jest/setupTests.ts"
   ]
 }
