@@ -6,6 +6,7 @@ module.exports = {
             changeLanguage: () => Promise.resolve(), // Исправили Promise
         },
     }),
+    // eslint-disable-next-line react/display-name
     withTranslation: () => (Component: any) => (props: any) =>
         React.createElement(Component, { ...props, t: (key: string) => key }), // Убрали `require("react")`
 };
