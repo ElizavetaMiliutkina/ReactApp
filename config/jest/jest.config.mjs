@@ -32,13 +32,14 @@ export default {
       },
     ],
     '\\.jsx?$': ['babel-jest', { plugins: ['@babel/plugin-transform-modules-commonjs'] }],
+    '\\.svg$': 'jest-transform-stub',
   },
   transformIgnorePatterns: [
     '/node_modules/',
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '\\.(css|scss)$': 'identity-obj-proxy'
+    '\\.(css|scss)$': 'identity-obj-proxy',
   },
   setupFilesAfterEnv: ['<rootDir>/config/jest/setupTests.ts']
 };

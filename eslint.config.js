@@ -14,6 +14,7 @@ export default [
       globals: {
         ...globals.browser, // добавляем globals для браузера
         ...globals.jest, // добавляем globals для Jest
+        ...globals.node, // добавляем globals для Jest
       },
     },
     rules: {
@@ -31,7 +32,8 @@ export default [
       "react/react-in-jsx-scope": "off",
       "object-curly-spacing": ["error", "always"],
       "@typescript-eslint/no-unused-vars": "warn",
-      "constructor-super": "off"
+      "constructor-super": "off",
+      "@typescript-eslint/no-explicit-any": ["off"]
     },
   },
   {

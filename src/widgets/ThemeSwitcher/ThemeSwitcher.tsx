@@ -1,8 +1,8 @@
 import { classNames } from "@/helpers/classNames/classNames.ts";
-import cls from './ThemeSwitcher.module.scss'
+import cls from './ThemeSwitcher.module.scss';
 import { useTheme } from "@/shared/theme/useTheme.ts";
-import { ReactComponent as IconDark } from "@/assets/theme-dark.svg";
-import { ReactComponent as IconLight } from "@/assets/theme-light.svg";
+import { ReactComponent as IconLight } from '@/assets/theme-light.svg';
+import { ReactComponent as IconDark } from '@/assets/theme-dark.svg';
 import { Theme } from "@/shared/theme/ThemeContext.ts";
 import { themeButton, UiButton } from "@/components/ui/Button/UiButton.tsx";
 
@@ -10,12 +10,8 @@ interface ThemeSwitcherProps {
     className?: string;
 }
 
-export const ThemeSwitcher = (props: ThemeSwitcherProps) => {
-    const {
-        className = '',
-    } = props;
-
-    const { theme, toggleTheme } = useTheme()
+export const ThemeSwitcher = ({ className = '' }: ThemeSwitcherProps) => {
+    const { theme, toggleTheme } = useTheme();
 
     return (
         <UiButton
@@ -23,7 +19,7 @@ export const ThemeSwitcher = (props: ThemeSwitcherProps) => {
             onClick={toggleTheme}
             className={classNames(cls.ThemeSwitcher, {}, [className])}
         >
-            {theme === Theme.DARK? <IconDark/> : <IconLight/>}
+            {theme === Theme.DARK ? <IconDark /> : <IconLight />}
         </UiButton>
     );
 };
