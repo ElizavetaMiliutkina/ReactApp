@@ -15,7 +15,7 @@
     "jsx": "react-jsx",
     "esModuleInterop": true,
     "allowImportingTsExtensions": true,
-    "types": ["jest", "@testing-library/jest-dom"]
+    "types": ["jest", "@testing-library/jest-dom", "node"],
   },
   "include": [
     "src/@types/**/*.d.ts",
