@@ -1,3 +1,8 @@
 import React, { FC } from 'react';
-declare const ThemeProvider: FC<React.PropsWithChildren>;
+import { Theme } from './ThemeContext.ts';
+interface ThemeProviderProps {
+    initialTheme?: Theme;
+    children: React.ReactNode;
+}
+declare const ThemeProvider: FC<ThemeProviderProps>;
 export default ThemeProvider;

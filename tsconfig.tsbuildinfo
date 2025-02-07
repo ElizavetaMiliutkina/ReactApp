@@ -1,1 +1,1 @@
-{"root":["./src/@types/svg.d.ts"],"version":"5.6.3"}
+{"root":["./src/@types/imports.d.ts","./src/@types/styles.d.ts","./src/@types/svg.d.ts","./config/jest/setupTests.ts"],"version":"5.6.3"}

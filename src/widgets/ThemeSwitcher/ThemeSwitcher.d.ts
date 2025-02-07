@@ -1,5 +1,4 @@
-interface ThemeSwitcherProps {
+export interface ThemeSwitcherProps {
     className?: string;
 }
-export declare const ThemeSwitcher: (props: ThemeSwitcherProps) => import("react/jsx-runtime").JSX.Element;
-export {};
+export declare const ThemeSwitcher: ({ className }: ThemeSwitcherProps) => import("react/jsx-runtime").JSX.Element;

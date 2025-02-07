@@ -1,3 +1,4 @@
 import { Navbar } from './Navbar/Navbar.tsx';
 import { ThemeSwitcher } from './ThemeSwitcher/ThemeSwitcher.tsx';
-export { Navbar, ThemeSwitcher };
+import { PageLoader } from './PageLoader/PageLoader.tsx';
+export { Navbar, ThemeSwitcher, PageLoader };
