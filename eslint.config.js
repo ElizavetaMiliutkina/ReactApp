@@ -16,6 +16,9 @@ export default [
         ...globals.jest, // добавляем globals для Jest
         ...globals.node, // добавляем globals для Jest
       },
+      parserOptions: {
+        sourceType: 'module',
+      },
     },
     rules: {
       "no-unused-vars": "warn",
