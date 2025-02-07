@@ -3,7 +3,7 @@ import cls from './Navbar.module.scss'
 import { UiLink, UiLinkTheme } from '@/components';
 import { useTranslation } from "react-i18next";
 
-interface NavbarProps {
+export interface NavbarProps {
     className?: string
 }
 

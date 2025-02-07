@@ -2,7 +2,7 @@ import { classNames } from '@/helpers/classNames/classNames';
 import { useTranslation } from 'react-i18next';
 import cls from './PageError.module.scss'
 
-interface PageErrorProps {
+export interface PageErrorProps {
     className?: string;
 }
 
