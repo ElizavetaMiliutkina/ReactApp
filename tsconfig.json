@@ -16,6 +16,7 @@
     "esModuleInterop": true,
     "allowImportingTsExtensions": true,
     "types": ["jest", "@testing-library/jest-dom", "node"],
+    "noEmit": true
   },
   "include": [
     "src/@types/**/*.d.ts",
