@@ -1,7 +1,7 @@
 import { classNames } from '@/helpers/classNames/classNames';
 import './UiLoader.scss'
 
-interface UiLoaderProps {
+export interface UiLoaderProps {
     className?: string;
 }
 

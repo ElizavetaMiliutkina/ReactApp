@@ -4,7 +4,7 @@ import { useState } from "react";
 import { ThemeSwitcher } from "@/widgets";
 import { LangSwitcher } from "@/widgets/LangSwitcher/LangSwitcher.tsx";
 
-interface SidebarProps {
+export interface SidebarProps {
     className?: string;
 }
 

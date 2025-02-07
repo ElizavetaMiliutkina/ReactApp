@@ -1,5 +1,7 @@
 .UiButton {
   cursor: pointer;
+  border-radius: 7px;
+  padding: 4px 8px;
 }
 
 .clear {
@@ -7,4 +9,8 @@
   border: none;
   background: none;
   outline: none;
+}
+
+.outline{
+  border: 2px solid var(--primary-color);
 }
