@@ -2,6 +2,7 @@ import globals from "globals";
 import pluginJs from "@eslint/js";
 import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
+import typescriptParser from "@typescript-eslint/parser";
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
@@ -17,8 +18,10 @@ export default [
         ...globals.node, // добавляем globals для Jest
       },
       parserOptions: {
-        sourceType: 'module',
+        ecmaVersion: 12, // Allow ES2021 syntax
+        sourceType: "module", // Enable ES6 module support
       },
+      parser: typescriptParser,
     },
     rules: {
       "no-unused-vars": "warn",

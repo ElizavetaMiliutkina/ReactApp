@@ -24,5 +24,7 @@ jobs:
         run: npm install
       - name: build project
         run: npm run build
+      - name: linting
+        run: npm run lint
       - name: unit testing
         run: npm run test:ui
