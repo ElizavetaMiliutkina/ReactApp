@@ -13,7 +13,6 @@
     "build-storybook": "storybook build -c ./config/storybook",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve"
-
   },
   "dependencies": {
     "i18next": "^24.2.2",
@@ -47,9 +46,11 @@
     "@types/node": "^22.10.5",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
+    "@typescript-eslint/parser": "^8.23.0",
     "@vitejs/plugin-react": "^4.3.4",
     "babel-jest": "^29.7.0",
-    "eslint": "^9.18.0",
+    "eslint": "^9.19.0",
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
