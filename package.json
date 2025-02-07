@@ -9,7 +9,7 @@
     "lint": "npx eslint . --fix --ignore-pattern dist/",
     "preview": "vite preview",
     "test": "jest --config config/jest/jest.config.mjs",
-    "storybook": "storybook dev -p 6006 -c ./config/storybook",
+    "storybook": "storybook dev -p 6006 -h 0.0.0.0 -c ./config/storybook",
     "build-storybook": "storybook build -c ./config/storybook",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve"
