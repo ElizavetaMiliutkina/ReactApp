@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test": "jest --config config/jest/jest.config.mjs",
     "storybook": "storybook dev -p 6006 -h 0.0.0.0 -c ./config/storybook",
-    "storybook:build": "npx storybook build -p 6006 -h 0.0.0.0 -c ./config/storybook -o ./storybook-static",
+    "storybook:build": "npx storybook build -c ./config/storybook -o ./storybook-static",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",
     "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static"
