@@ -1,5 +1,5 @@
 module.exports = {
-    url: "http://localhost:6006", // Make sure this points to where Storybook is running
+    storybookStaticDir: './storybook-static',
     configurations: {
         "chrome.laptop": {
             target: "chrome.app",
