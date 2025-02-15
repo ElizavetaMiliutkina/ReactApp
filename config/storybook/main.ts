@@ -15,14 +15,18 @@ const config: StorybookConfig = {
     name: "@storybook/react-vite",
     options: {},
   },
+  core: {
+    disableTelemetry: true
+  },
   viteFinal: async (storybookConfig) => {
     const viteConfig = await loadConfigFromFile(
-        { mode: "development", command: "serve" },
+        { mode: "production", command: "build" },
         path.resolve(__dirname, "../../vite.config.ts")
     );
-
     return mergeConfig(storybookConfig, viteConfig?.config || {});
   },
+  // Убедитесь, что настройка includes 'iframe' для генерации нужных файлов
+  staticDirs: ['../../public'], // Это может быть полезно, если нужно включить статические ресурсы
 };
 
 export default config;

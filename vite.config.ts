@@ -14,8 +14,8 @@ export default defineConfig({
       { find: '@', replacement: path.resolve(__dirname, 'src') },
     ],
   },
-  build: {
-    outDir: 'dist', // Папка для собранных файлов
-    sourcemap: true, // Опционально: добавить source maps
-  },
+  // build: {
+  //   outDir: 'dist', // Папка для собранных файлов
+  //   sourcemap: true, // Опционально: добавить source maps
+  // },
 })
