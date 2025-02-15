@@ -26,7 +26,8 @@ jobs:
         run: npm run lint
       - name: unit testing
         run: npm run test
-      - name: build storybook
-        run: npm run storybook:build
-      - name: screenshot testing
-        run: npm run test:ui:ci
+      - name: Start Storybook
+        run: npm storybook dev -p 6006 -h 0.0.0.0 -c ./config/storybook &
+      - name: unit testing
+        run: npm run test:ui
+
