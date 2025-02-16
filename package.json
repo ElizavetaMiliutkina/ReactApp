@@ -13,7 +13,7 @@
     "storybook:build": "npx storybook build -c ./config/storybook",
     "test:ui": "npx loki test",
     "test:ui:ok": "npx loki approve",
-    "test:ui:ci": "npx loki --requireReference --reactUri file:./storybook-static"
+    "test:ui:ci": "npx loki test --storiesPath=./storybook-static"
   },
   "dependencies": {
     "@loki/runner": "^0.35.0",
