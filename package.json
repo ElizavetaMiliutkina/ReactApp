@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite --mode development",
     "build": "tsc -b && vite build --mode production",
-    "lint": "npx eslint . --fix --ignore-pattern dist/",
+    "lint": "npx eslint . --fix --ignore-pattern dist/ --ignore-pattern storybook-static/",
     "preview": "vite preview",
     "test": "jest --config config/jest/jest.config.mjs",
     "storybook": "storybook dev -p 6006 -h 0.0.0.0 -c ./config/storybook",
