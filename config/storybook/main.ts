@@ -19,9 +19,7 @@ const config: StorybookConfig = {
         path.resolve(__dirname, "../../vite.config.ts")
     );
     return mergeConfig(storybookConfig, viteConfig?.config || {});
-  },
-  // Убедитесь, что настройка includes 'iframe' для генерации нужных файлов
-  staticDirs: ['../../public'], // Это может быть полезно, если нужно включить статические ресурсы
+  }
 };
 
 export default config;
