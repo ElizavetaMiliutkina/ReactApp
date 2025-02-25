@@ -29,5 +29,5 @@ jobs:
       - name: build storybook
         run: npm run storybook dev -p 6006 -h 0.0.0.0 -c ./config/storybook &
       - name: screenshot testing
-        run: npm run test:ui:ci
+        run: npm run test:ui
 
