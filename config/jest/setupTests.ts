@@ -12,4 +12,11 @@ jest.mock('@/assets/theme-light.svg', () => ({
 jest.mock('@/assets/theme-dark.svg', () => ({
     ReactComponent: () => 'Mocked SVG Dark'
 }));
+jest.mock('@/assets/main-20-20.svg', () => ({
+    ReactComponent: () => 'Mocked SVG Light'
+}));
+
+jest.mock('@/assets/about-20-20.svg', () => ({
+    ReactComponent: () => 'Mocked SVG Dark'
+}));
 

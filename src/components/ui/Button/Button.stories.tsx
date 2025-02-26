@@ -1,8 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import { UiButton, UiButtonProps, themeButton } from "./UiButton.tsx";
-import { ThemeDecorator } from "@/shared/config/storybook/themeDecorator/ThemeDecorator.tsx";
-import { Theme } from "@/shared/theme/ThemeContext.ts";
+import type {Meta, StoryObj} from '@storybook/react';
+import {fn} from '@storybook/test';
+import {sizeButton, themeButton, UiButton, UiButtonProps} from "./UiButton.tsx";
+import {ThemeDecorator} from "@/shared/config/storybook/themeDecorator/ThemeDecorator.tsx";
+import {Theme} from "@/shared/theme/ThemeContext.ts";
 
 const meta: Meta<UiButtonProps> = {
     title: 'components/UiButton',
@@ -45,6 +45,14 @@ export const Outline: Story = {
     },
 };
 
+export const OutlineXL: Story = {
+    args: {
+        children: 'Text',
+        theme: themeButton.OUTLINE,
+        size: sizeButton.XL
+    },
+};
+
 
 export const OutlineDark: Story = {
     args: {
@@ -54,4 +62,54 @@ export const OutlineDark: Story = {
     decorators: [
         (Story) => ThemeDecorator(Story, Theme.DARK),
     ],
+};
+
+
+export const Background: Story = {
+    args: {
+        children: 'Text',
+        theme: themeButton.BACKGROUND,
+    },
+};
+
+export const BackgroundInverted: Story = {
+    args: {
+        children: 'Text',
+        theme: themeButton.BACKGROUND_INVERTED,
+    },
+};
+
+export const Square: Story = {
+    args: {
+        children: '>',
+        theme: themeButton.BACKGROUND_INVERTED,
+        square: true
+    },
+};
+
+export const SquareSizeL: Story = {
+    args: {
+        children: '>',
+        theme: themeButton.BACKGROUND_INVERTED,
+        square: true,
+        size: sizeButton.L
+    },
+};
+
+export const SquareSizeM: Story = {
+    args: {
+        children: '>',
+        theme: themeButton.BACKGROUND_INVERTED,
+        square: true,
+        size: sizeButton.M
+    },
+};
+
+export const SquareSizeXL: Story = {
+    args: {
+        children: '>',
+        theme: themeButton.BACKGROUND_INVERTED,
+        square: true,
+        size: sizeButton.XL
+    },
 };
