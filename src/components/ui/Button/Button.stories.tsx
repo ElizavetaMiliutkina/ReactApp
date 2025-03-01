@@ -1,8 +1,8 @@
-import type {Meta, StoryObj} from '@storybook/react';
-import {fn} from '@storybook/test';
-import {sizeButton, themeButton, UiButton, UiButtonProps} from "./UiButton.tsx";
-import {ThemeDecorator} from "@/shared/config/storybook/themeDecorator/ThemeDecorator.tsx";
-import {Theme} from "@/shared/theme/ThemeContext.ts";
+import type { Meta, StoryObj } from '@storybook/react';
+import { fn } from '@storybook/test';
+import { sizeButton, themeButton, UiButton, UiButtonProps } from "./UiButton.tsx";
+import { ThemeDecorator } from "@/shared/config/storybook/themeDecorator/ThemeDecorator.tsx";
+import { Theme } from "@/shared/theme/ThemeContext.ts";
 
 const meta: Meta<UiButtonProps> = {
     title: 'components/UiButton',
