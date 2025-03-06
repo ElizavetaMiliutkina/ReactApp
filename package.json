@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --mode development",
+    "start:dev:server": "node ./json-server/index.js",
     "build": "tsc -b && vite build --mode production",
     "lint": "npx eslint . --fix --ignore-pattern dist/ --ignore-pattern storybook-static/",
     "preview": "vite preview",
@@ -66,6 +67,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
+    "json-server": "^0.17.0",
     "loki": "^0.35.1",
     "sass": "^1.83.1",
     "storybook": "^8.5.3",
