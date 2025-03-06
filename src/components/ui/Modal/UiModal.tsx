@@ -2,7 +2,6 @@ import { classNames } from '@/helpers/classNames/classNames';
 import cls from './UiModal.module.scss'
 import React, { ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { Portal } from "@/components/ui/Portal/Portal.tsx";
-import { useTheme } from "@/shared/theme/useTheme.ts";
 
 export interface UiModalProps {
     className?: string;
@@ -23,7 +22,6 @@ export const UiModal = (props: UiModalProps) => {
 
     const [isClosing, setIsClosing] = useState(false);
     const timerRef = useRef<ReturnType<typeof setTimeout>>();
-    const { theme } = useTheme()
 
     const closeHandler = useCallback(() => {
         if (onClose) {
@@ -64,7 +62,7 @@ export const UiModal = (props: UiModalProps) => {
 
     return (
         <Portal>
-            <div className={classNames(cls.UiModal, mods, [className, theme])}>
+            <div className={classNames(cls.UiModal, mods, [className])}>
                 <div className={cls.overlay} onClick={closeHandler}>
                     <div className={cls.content} onClick={onContentClick}>
                         {children}
