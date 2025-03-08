@@ -1,5 +1,5 @@
-import { getCounter } from "@/entities/model/selectors/getCounter/getCounter.ts";
-import { StateSchema } from "@/helpers/StoreProvider/StateSchema";
+import { getCounter } from "@/entities/Counter/model/selectors/getCounter/getCounter.ts";
+import { StateSchema } from "@/helpers/StoreProvider/StateSchema.ts";
 import { DeepPartial } from "utility-types";
 
 describe('getCounter', () => {
