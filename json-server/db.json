@@ -1,34 +1,35 @@
 {
   "posts": [
     {
-      "id": "1",
-      "title": "a title",
-      "views": 100
+      "id": 1,
+      "title": "json-server",
+      "userId": 1
     },
     {
-      "id": "2",
-      "title": "another title",
-      "views": 200
-    },
-    {
-      "password": "123",
-      "username": "admin",
-      "id": "OV6LlwY"
+      "id": 2,
+      "title": "json-server",
+      "userId": 2
     }
   ],
   "comments": [
     {
-      "id": "1",
-      "text": "a comment about post 1",
-      "postId": "1"
-    },
-    {
-      "id": "2",
-      "text": "another comment about post 1",
-      "postId": "1"
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
     }
   ],
-  "profile": {
-    "name": "typicode"
-  }
+  "users": [
+    {
+      "first": "Елизавета",
+      "lastname": "Милюткина",
+      "password": "123",
+      "age": 22,
+      "currency": "RUB",
+      "country": "Russia",
+      "city": "Moscow",
+      "username": "admin",
+      "avatar": "https://images.pexels.com/photos/27850306/pexels-photo-27850306.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+    }
+  ],
+  "profile": { "name": "typicode" }
 }

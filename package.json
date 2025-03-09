@@ -19,6 +19,7 @@
   "dependencies": {
     "@loki/runner": "^0.35.0",
     "@reduxjs/toolkit": "^2.6.0",
+    "axios": "^1.8.2",
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.2",
     "i18next-http-backend": "^3.0.1",

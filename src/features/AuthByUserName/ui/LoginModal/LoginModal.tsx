@@ -1,5 +1,4 @@
 import { classNames } from '@/helpers/classNames/classNames';
-import cls from './LoginModal.module.scss'
 import { UiModal } from "@/components/ui/Modal/UiModal.tsx";
 import { LoginForm } from "../LoginForm/LoginForm.tsx";
 
@@ -19,7 +18,7 @@ export const LoginModal = (props: LoginModalProps) => {
     return (
         <UiModal isOpen={isOpen}
                  onClose={onClose}
-                 className={classNames(cls.LoginModal, {}, [className])}
+                 className={classNames('', {}, [className])}
                  lazy
         >
             <LoginForm/>

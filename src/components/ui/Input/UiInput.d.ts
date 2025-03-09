@@ -1,6 +1,6 @@
 import React, { InputHTMLAttributes } from "react";
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>;
-export interface InputProps extends HTMLInputProps {
+export interface UiInputProps extends HTMLInputProps {
     className?: string;
     type?: string;
     value?: string;
@@ -8,5 +8,5 @@ export interface InputProps extends HTMLInputProps {
     onChange?: (value: string) => void;
     autofocus?: boolean;
 }
-export declare const UiInput: React.MemoExoticComponent<(props: InputProps) => import("react/jsx-runtime").JSX.Element>;
+export declare const UiInput: React.MemoExoticComponent<(props: UiInputProps) => import("react/jsx-runtime").JSX.Element>;
 export {};
