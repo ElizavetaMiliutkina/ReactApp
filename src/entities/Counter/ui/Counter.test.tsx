@@ -21,7 +21,6 @@ describe('Counter', () => {
         });
 
         userEvent.click(screen.getByTestId('increment-btn'));
-
         await waitFor(() => {
             expect(screen.getByTestId('value-title')).toHaveTextContent('11');
         });
