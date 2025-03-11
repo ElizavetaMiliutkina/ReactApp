@@ -19,6 +19,4 @@ export function createReduxStore(initiateState?:StateSchema) {
 }
 
 export type AppDispatch = ReturnType<typeof createReduxStore>["dispatch"];
-// // Типы для useSelector и useDispatch
-// export type RootState = ReturnType<typeof store.getState>;
-// export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof createReduxStore>['getState'];

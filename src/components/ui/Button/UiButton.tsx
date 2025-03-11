@@ -22,6 +22,7 @@ export interface UiButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     theme?: themeButton;
     square?: boolean;
     size?: sizeButton
+    disabled?: boolean
 }
 
 export const UiButton: FC<UiButtonProps> = (props) => {
@@ -31,18 +32,21 @@ export const UiButton: FC<UiButtonProps> = (props) => {
         children,
         square,
         size = sizeButton.M,
+        disabled,
         ...othersProps
     } = props;
 
     const mods: Record<string, boolean> = {
         [cls[theme]]: true,
         [cls[size]]: true,
-        [cls.square]: !!square
+        [cls.square]: !!square,
+        [cls.disabled]: !!disabled
     };
 
     return (
         <button
             className={classNames(cls.UiButton, mods, [className])}
+            disabled={disabled}
             {...othersProps}
         >
             {children}

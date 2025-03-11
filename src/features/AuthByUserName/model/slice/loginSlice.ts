@@ -6,6 +6,7 @@ import { loginByUserName } from "@/features/AuthByUserName/model/services/loginB
 const initialState: LoginSchema = {
     username: '',
     password: '',
+    error: '',
     isLoading: false
 }
 export const loginSlice = createSlice({

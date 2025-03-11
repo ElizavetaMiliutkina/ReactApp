@@ -9,6 +9,7 @@ import { AppDispatch } from "@/helpers/StoreProvider/store.ts";
 import { loginActions } from "../../model/slice/loginSlice.ts";
 import { getLoginState } from "@/features/AuthByUserName/model/selectors/getLoginState/getLoginState.ts";
 import { loginByUserName } from "@/features/AuthByUserName/model/services/loginByUserName/loginByUserName.ts";
+import { TextTheme, UiText } from "@/components/ui/Text/UiText.tsx";
 
 export interface LoginFormProps {
     className?: string;
@@ -19,9 +20,9 @@ export const LoginForm = memo((props: LoginFormProps) => {
         className = '',
     } = props;
 
-    const { t } = useTranslation();
+    const { t } = useTranslation('login');
     const dispatch = useDispatch<AppDispatch>();
-    const { username, password } = useSelector(getLoginState)
+    const { username, password, error, isLoading } = useSelector(getLoginState)
 
     // Для всех функций которые мы куда то передаем пропсом мы используем callback, что бы ссылка никогда не менялась
     const changeUserName = useCallback((value: string) => {
@@ -40,14 +41,16 @@ export const LoginForm = memo((props: LoginFormProps) => {
 
     return (
         <div className={classNames(cls.LoginForm, {}, [className])} >
+            <UiText title={t('Форма авторизации')}/>
+            {error && <UiText text={error} theme={TextTheme.ERROR}/>}
             <UiInputGeneral type='text'
-                     placeholder={'Введите username'}
+                     placeholder={t('Введите username')}
                      className={cls.input}
                      onChange={changeUserName}
                      value={username}
             />
             <UiInputGeneral type='text'
-                     placeholder={'Введите пароль'}
+                     placeholder={t('Введите пароль')}
                      className={cls.input}
                      onChange={changePassword}
                      value={password}
@@ -55,6 +58,7 @@ export const LoginForm = memo((props: LoginFormProps) => {
             <UiButton className={cls.loginBtn}
                       theme={themeButton.OUTLINE}
                       onClick={onLoginClick}
+                      disabled={isLoading}
             >
                 {t('Войти')}
             </UiButton>

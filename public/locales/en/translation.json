@@ -15,5 +15,6 @@
   "Короткий язык": "Ru",
   "Войти": "Login",
   "increment": "increment",
-  "decrement": "decrement"
+  "decrement": "decrement",
+  "Вы ввели неверный логин или пароль": "You have entered an incorrect login or password"
 }
