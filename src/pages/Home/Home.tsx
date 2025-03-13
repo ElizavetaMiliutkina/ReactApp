@@ -1,12 +1,12 @@
 import { useTranslation } from "react-i18next";
-import { Counter } from "@/entities/Counter";
+import { DragAndDrop } from "@/entities/DragAndDrop/ui/DragAndDrop.tsx";
 
 function Home() {
     const { t } = useTranslation('home');
     return (
         <div>
             {t('Домашняя')}
-            <Counter/>
+            <DragAndDrop/>
         </div>
     );
 }
