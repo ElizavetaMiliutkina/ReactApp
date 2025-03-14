@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { LoginFormProps, LoginForm } from "./LoginForm.tsx";
+import LoginForm, { LoginFormProps } from "./LoginForm.tsx";
 import { StoreDecorator } from "@/shared/config/storybook/storeDecorator/StoreDecorator.tsx";
 
 const meta: Meta<LoginFormProps> = {

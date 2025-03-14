@@ -1,0 +1,12 @@
+import type { Meta, StoryObj } from '@storybook/react';
+import { TextProps } from "./UiText.tsx";
+declare const meta: Meta<TextProps>;
+export default meta;
+type Story = StoryObj<TextProps>;
+export declare const Primary: Story;
+export declare const OnlyTitle: Story;
+export declare const OnlyText: Story;
+export declare const Error: Story;
+export declare const PrimaryDark: Story;
+export declare const OnlyTitleDark: Story;
+export declare const OnlyTextDark: Story;

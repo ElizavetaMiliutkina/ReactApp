@@ -17,5 +17,6 @@ export interface UiButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     theme?: themeButton;
     square?: boolean;
     size?: sizeButton;
+    disabled?: boolean;
 }
 export declare const UiButton: FC<UiButtonProps>;

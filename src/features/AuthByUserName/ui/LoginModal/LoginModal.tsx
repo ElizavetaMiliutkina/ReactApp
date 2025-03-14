@@ -1,6 +1,8 @@
 import { classNames } from '@/helpers/classNames/classNames';
 import { UiModal } from "@/components/ui/Modal/UiModal.tsx";
-import { LoginForm } from "../LoginForm/LoginForm.tsx";
+import { Suspense } from "react";
+import { UiLoader } from "@/components";
+import { LoginFormAsync } from "../LoginForm/LoginForm.async.ts";
 
 interface LoginModalProps {
     className?: string;
@@ -21,7 +23,9 @@ export const LoginModal = (props: LoginModalProps) => {
                  className={classNames('', {}, [className])}
                  lazy
         >
-            <LoginForm/>
+            <Suspense fallback={<UiLoader/>}>
+                <LoginFormAsync/>
+            </Suspense>
         </UiModal>
     );
 };

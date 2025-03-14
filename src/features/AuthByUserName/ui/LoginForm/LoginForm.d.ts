@@ -1,4 +1,5 @@
 export interface LoginFormProps {
     className?: string;
 }
-export declare const LoginForm: (props: LoginFormProps) => import("react/jsx-runtime").JSX.Element;
+declare const LoginForm: import("react").MemoExoticComponent<(props: LoginFormProps) => import("react/jsx-runtime").JSX.Element>;
+export default LoginForm;

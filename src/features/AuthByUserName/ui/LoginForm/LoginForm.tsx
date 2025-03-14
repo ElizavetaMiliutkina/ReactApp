@@ -3,11 +3,14 @@ import { useTranslation } from 'react-i18next';
 import cls from './LoginForm.module.scss'
 import { themeButton, UiButton } from "@/components/ui/Button/UiButton";
 import { UiInputGeneral } from "@/components/ui/InputGeneral/UiInputGeneral.tsx";
-import { useDispatch, useSelector } from "react-redux";
-import { memo, useCallback } from 'react';
-import { AppDispatch } from "@/helpers/StoreProvider/store.ts";
+import {useDispatch, useSelector, useStore} from "react-redux";
+import {memo, useCallback, useEffect} from 'react';
+import {AppDispatch, AppStore} from "@/helpers/StoreProvider/store.ts";
 import { loginActions } from "../../model/slice/loginSlice.ts";
-import { getLoginState } from "@/features/AuthByUserName/model/selectors/getLoginState/getLoginState.ts";
+import { getLoginUsername } from '../../model/selectors/getLoginUserName/getLoginUsername';
+import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
+import { getLoginError } from '../../model/selectors/getLoginError/getLoginError';
+import { getLoginIsLoading } from '../../model/selectors/getLoginIsLoading/getLoginIsLoading';
 import { loginByUserName } from "@/features/AuthByUserName/model/services/loginByUserName/loginByUserName.ts";
 import { TextTheme, UiText } from "@/components/ui/Text/UiText.tsx";
 
@@ -15,14 +18,35 @@ export interface LoginFormProps {
     className?: string;
 }
 
-export const LoginForm = memo((props: LoginFormProps) => {
+const LoginForm = memo((props: LoginFormProps) => {
     const {
         className = '',
     } = props;
 
     const { t } = useTranslation('login');
     const dispatch = useDispatch<AppDispatch>();
-    const { username, password, error, isLoading } = useSelector(getLoginState)
+    const username = useSelector(getLoginUsername);
+    const password = useSelector(getLoginPassword);
+    const error = useSelector(getLoginError);
+    const isLoading = useSelector(getLoginIsLoading);
+
+    const store = useStore() as AppStore;
+
+    useEffect(() => {
+        // Асинхронно загружаем редюсер
+        import('@/features/AuthByUserName/model/slice/loginSlice.ts').then((module) => {
+            console.log('init')
+            store.addReducer('loginForm', module.loginReducer);
+            dispatch({ type: '@INIT init LoginForm reducer' })
+        });
+
+        // Опционально: удаляем редюсер при размонтировании
+        return () => {
+            console.log('destroy')
+            store.removeReducer('loginForm');
+            dispatch({ type: '@INIT destroy LoginForm reducer' })
+        };
+    }, [dispatch, store]);
 
     // Для всех функций которые мы куда то передаем пропсом мы используем callback, что бы ссылка никогда не менялась
     const changeUserName = useCallback((value: string) => {
@@ -65,3 +89,5 @@ export const LoginForm = memo((props: LoginFormProps) => {
         </div>
     );
 });
+
+export default LoginForm

@@ -14,3 +14,4 @@ export declare const Square: Story;
 export declare const SquareSizeL: Story;
 export declare const SquareSizeM: Story;
 export declare const SquareSizeXL: Story;
+export declare const Disabled: Story;
