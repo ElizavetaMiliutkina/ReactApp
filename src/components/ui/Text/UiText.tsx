@@ -1,5 +1,6 @@
 import { classNames } from '@/helpers/classNames/classNames';
 import cls from './UiText.module.scss'
+import { memo } from "react";
 
 export enum TextTheme {
     PRIMARY = 'primary',
@@ -13,7 +14,7 @@ export interface TextProps {
     theme?: TextTheme
 }
 
-export const UiText = (props: TextProps) => {
+export const UiText = memo((props: TextProps) => {
     const {
         className = '',
         title,
@@ -27,4 +28,4 @@ export const UiText = (props: TextProps) => {
             {text && <p className={cls.text}>{text}</p>}
         </div>
     );
-};
+});

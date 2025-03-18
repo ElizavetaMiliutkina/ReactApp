@@ -1,24 +1,20 @@
 import { classNames } from '@/helpers/classNames/classNames.ts';
 import cls from './Sidebar.module.scss'
-import { useState } from "react";
+import { memo, useState } from "react";
 import { ThemeSwitcher } from "@/widgets";
 import { LangSwitcher } from "@/widgets/LangSwitcher/LangSwitcher.tsx";
 import { themeButton, sizeButton, UiButton } from "@/components/ui/Button/UiButton.tsx";
-import { UiLink, UiLinkTheme } from "@/components";
-import { ReactComponent as IconMain } from '@/assets/main-20-20.svg';
-import { ReactComponent as IconDashboard } from '@/assets/about-20-20.svg';
-import { useTranslation } from "react-i18next";
+import { SidebarItemsList } from "@/widgets/Sidebar/SidebarItem.ts";
+import { SidebarItem } from "@/widgets/Sidebar/SidebarItem/SidebarItem.tsx";
 
 export interface SidebarProps {
     className?: string;
 }
 
-export const Sidebar = (props: SidebarProps) => {
+export const Sidebar = memo((props: SidebarProps) => {
     const {
         className = '',
     } = props;
-
-    const { t } = useTranslation()
 
     const [collapsed, setCollapsed] = useState(false)
     const toggleCollapsed = () => {
@@ -30,22 +26,13 @@ export const Sidebar = (props: SidebarProps) => {
              className={classNames(cls.Sidebar, { [cls.collapsed]:collapsed }, [className])}
         >
             <div className={cls.items}>
-                <UiLink
-                    className={cls.item}
-                    to={'/'}
-                    theme={UiLinkTheme.SECONDARY}
-                >
-                    <IconMain className={cls.icon} />
-                    <span className={cls.link}>{t('Главная')}</span>
-                </UiLink>
-                <UiLink
-                    className={cls.item}
-                    to={'/dashboard'}
-                    theme={UiLinkTheme.SECONDARY}
-                >
-                    <IconDashboard className={cls.icon} />
-                    <span className={cls.link}>{t('Домашняя')}</span>
-                </UiLink>
+                {SidebarItemsList.map((item) => (
+                    <SidebarItem
+                        item={item}
+                        collapsed={collapsed}
+                        key={item.path}
+                    />
+                ))}
             </div>
             <UiButton
                 data-testid='sidebar-toggle'
@@ -63,4 +50,4 @@ export const Sidebar = (props: SidebarProps) => {
             </div>
         </div>
     );
-};
+});

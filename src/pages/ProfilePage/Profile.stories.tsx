@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Navbar, NavbarProps } from "./Navbar.tsx";
+import Profile from "./Profile.tsx";
 import { ThemeDecorator } from "@/shared/config/storybook/themeDecorator/ThemeDecorator.tsx";
 import { Theme } from "@/shared/theme/ThemeContext.ts";
-import { StoreDecorator } from "@/shared/config/storybook/storeDecorator/StoreDecorator.tsx";
+import { StoreDecorator } from "@/shared/config/storybook/storeDecorator/StoreDecorator";
 
-const meta: Meta<NavbarProps> = {
-    title: 'widgets/Navbar',
-    component: Navbar,
+const meta: Meta = {
+    title: 'pages/Profile',
+    component: Profile,
     parameters: {
         layout: 'centered',
     },
@@ -16,8 +16,7 @@ const meta: Meta<NavbarProps> = {
 };
 
 export default meta;
-type Story = StoryObj<NavbarProps>;
-
+type Story = StoryObj;
 
 export const Light: Story = {
     args: {}

@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import Dashboard from "./Dashboard.tsx";
 import { ThemeDecorator } from "@/shared/config/storybook/themeDecorator/ThemeDecorator.tsx";
 import { Theme } from "@/shared/theme/ThemeContext.ts";
+import { StoreDecorator } from "@/shared/config/storybook/storeDecorator/StoreDecorator.tsx";
 
 const meta: Meta = {
     title: 'pages/Dashboard',
@@ -9,6 +10,9 @@ const meta: Meta = {
     parameters: {
         layout: 'centered',
     },
+    decorators: [
+        StoreDecorator({}),
+    ],
 };
 
 export default meta;

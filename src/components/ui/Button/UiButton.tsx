@@ -1,6 +1,6 @@
 import { classNames } from "@/helpers/classNames/classNames.ts";
 import cls from './UiButton.module.scss'
-import { ButtonHTMLAttributes, FC } from "react";
+import { ButtonHTMLAttributes, memo, ReactNode } from "react";
 
 export enum themeButton {
     CLEAR='clear',
@@ -23,9 +23,10 @@ export interface UiButtonProps extends ButtonHTMLAttributes<HTMLButtonElement>{
     square?: boolean;
     size?: sizeButton
     disabled?: boolean
+    children?: ReactNode
 }
 
-export const UiButton: FC<UiButtonProps> = (props) => {
+export const UiButton = memo((props:UiButtonProps) => {
     const {
         className = '',
         theme = themeButton.PRIMARY,
@@ -52,4 +53,4 @@ export const UiButton: FC<UiButtonProps> = (props) => {
             {children}
         </button>
     );
-};
+});

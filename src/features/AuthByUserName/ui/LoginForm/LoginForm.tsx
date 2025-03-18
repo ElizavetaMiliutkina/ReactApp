@@ -3,9 +3,9 @@ import { useTranslation } from 'react-i18next';
 import cls from './LoginForm.module.scss'
 import { themeButton, UiButton } from "@/components/ui/Button/UiButton";
 import { UiInputGeneral } from "@/components/ui/InputGeneral/UiInputGeneral.tsx";
-import {useDispatch, useSelector, useStore} from "react-redux";
-import {memo, useCallback, useEffect} from 'react';
-import {AppDispatch, AppStore} from "@/helpers/StoreProvider/store.ts";
+import { useDispatch, useSelector, useStore } from "react-redux";
+import { memo, useCallback, useEffect } from 'react';
+import { AppDispatch, AppStore } from "@/helpers/StoreProvider/store.ts";
 import { loginActions } from "../../model/slice/loginSlice.ts";
 import { getLoginUsername } from '../../model/selectors/getLoginUserName/getLoginUsername';
 import { getLoginPassword } from '../../model/selectors/getLoginPassword/getLoginPassword';
@@ -43,6 +43,7 @@ const LoginForm = memo((props: LoginFormProps) => {
         // Опционально: удаляем редюсер при размонтировании
         return () => {
             console.log('destroy')
+            dispatch(loginActions.clearLogin())
             store.removeReducer('loginForm');
             dispatch({ type: '@INIT destroy LoginForm reducer' })
         };

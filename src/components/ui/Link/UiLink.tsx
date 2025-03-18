@@ -1,7 +1,7 @@
 import { classNames } from "@/helpers/classNames/classNames.ts";
 import cls from './UiLink.module.scss'
-import { FC } from "react";
 import { Link, LinkProps } from "react-router-dom";
+import { memo, ReactNode } from "react";
 
 export enum UiLinkTheme {
     PRIMARY = 'primary',
@@ -11,9 +11,10 @@ export enum UiLinkTheme {
 export interface AppLinkProps extends LinkProps{
     className?: string;
     theme?: UiLinkTheme
+    children?: ReactNode
 }
 
-export const UiLink: FC<AppLinkProps> = (props) => {
+export const UiLink= memo((props: AppLinkProps) => {
     const {
         to,
         className = '',
@@ -29,4 +30,4 @@ export const UiLink: FC<AppLinkProps> = (props) => {
             {children}
         </Link>
     );
-};
+});
