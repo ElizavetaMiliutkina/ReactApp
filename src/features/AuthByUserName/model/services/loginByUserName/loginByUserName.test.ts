@@ -2,7 +2,7 @@ import axios from "axios";
 import { loginByUserName } from "@/features/AuthByUserName/model/services/loginByUserName/loginByUserName.ts";
 import { Dispatch } from "@reduxjs/toolkit";
 import { StateSchema } from "@/helpers/StoreProvider/StateSchema.ts";
-import {userActions} from "@/entities/User/model/slice/userSlice.ts";
+import { userActions } from "@/entities/User/model/slice/userSlice.ts";
 
 // Tell TypeScript that axios is mocked by Jest
 jest.mock('axios');
