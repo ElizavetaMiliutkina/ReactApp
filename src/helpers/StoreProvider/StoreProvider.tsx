@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { createReduxStore } from "@/helpers/StoreProvider/store.ts";
 import { StateSchema } from "./StateSchema.ts";
 import { DeepPartial } from "utility-types";
+import { useNavigate } from "react-router-dom";
 
 interface StoreProviderProps {
     children?: ReactNode;
@@ -15,7 +16,8 @@ export const StoreProvider = (props: StoreProviderProps) => {
         initiateState
     } = props
 
-    const store = createReduxStore(initiateState as StateSchema)
+    const navigate = useNavigate()
+    const store = createReduxStore(initiateState as StateSchema, navigate)
 
     return (
         <Provider store={store}>

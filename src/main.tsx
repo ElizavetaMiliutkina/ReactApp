@@ -13,15 +13,15 @@ const Root = () => {
     const { theme } = useTheme();
 
     return (
-        <StoreProvider>
-            <ErrorBoundary>
-                <BrowserRouter>
+        <BrowserRouter>
+            <StoreProvider>
+                <ErrorBoundary>
                     <ThemeProvider initialTheme={theme}>
                         <App />
                     </ThemeProvider>
-                </BrowserRouter>
-            </ErrorBoundary>
-        </StoreProvider>
+                </ErrorBoundary>
+            </StoreProvider>
+        </BrowserRouter>
     );
 };
 

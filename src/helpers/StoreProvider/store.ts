@@ -7,6 +7,10 @@ import {
 import { StateSchema } from './StateSchema.ts';
 import { counterReducer } from '@/entities/Counter';
 import { userReducer } from '@/entities/User';
+import { $api } from "@/shared/api/api.ts";
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-expect-error
+import { N as NavigateOptions, T as To } from "react-router/dist/development/route-data-BmvbmBej";
 
 // Функция для создания менеджера редюсеров
 const createReducerManager = (initialReducers: ReducersMapObject<StateSchema>) => {
@@ -45,7 +49,10 @@ const createReducerManager = (initialReducers: ReducersMapObject<StateSchema>) =
     return { add, remove, getReducerMap, reduce };
 };
 
-export function createReduxStore(initialState?: StateSchema) {
+export function createReduxStore(
+    initialState?: StateSchema,
+    navigate?: (to: To, options?: NavigateOptions) => void
+) {
     const staticReducers: ReducersMapObject<StateSchema> = {
         counter: counterReducer,
         user: userReducer,
@@ -58,6 +65,14 @@ export function createReduxStore(initialState?: StateSchema) {
         reducer: reducerManager.reduce,
         preloadedState: initialState,
         devTools: process.env.NODE_ENV !== 'production',
+        middleware: getDefaultMiddleware => getDefaultMiddleware({
+            thunk: {
+                extraArgument: {
+                    api: $api,
+                    navigate
+                }
+            }
+        })
     });
 
     return {
