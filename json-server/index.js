@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 const server = jsonServer.create();
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
-server.use(jsonServer.defaults());
+server.use(jsonServer.defaults({}));
 server.use(jsonServer.bodyParser);
 
 // Нужно для небольшой задержки, чтобы запрос проходил не мгновенно, имитация реального API
@@ -23,7 +23,7 @@ server.use(async (req, res, next) => {
 server.post('/login', (req, res) => {
     try {
         const { username, password } = req.body;
-        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'utf-8'));
+        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
         const { users = [] } = db;
 
         const userFromBd = users.find(
@@ -43,6 +43,7 @@ server.post('/login', (req, res) => {
 
 // Проверяем, авторизован ли пользователь
 server.use((req, res, next) => {
+     console.log(req, 'REQ')
     if (!req.headers.authorization) {
         return res.status(403).json({ message: 'AUTH ERROR' });
     }
@@ -53,5 +54,5 @@ server.use(router);
 
 // Запуск сервера
 server.listen(8000, () => {
-    console.log('Server is running on port 8000');
+    console.log('Server is running on 8000 port');
 });

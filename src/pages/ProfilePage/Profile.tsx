@@ -4,6 +4,7 @@ import { useDispatch, useStore } from "react-redux";
 import { AppDispatch, AppStore } from "@/helpers/StoreProvider/store.ts";
 import { useEffect } from "react";
 import { loginActions } from "@/features/AuthByUserName/model/slice/loginSlice.ts";
+import { fetchProfileData, ProfileCard } from "@/entities/Profile";
 
 export interface ProfileProps {
     className?: string;
@@ -36,9 +37,15 @@ const Profile = (props: ProfileProps) => {
         };
     }, [dispatch, store]);
 
+
+    useEffect(() => {
+        dispatch(fetchProfileData())
+    }, [dispatch]);
+
     return (
         <div className={classNames('', {}, [className])} >
             {t('Профиль')}
+            <ProfileCard/>
         </div>
     );
 };
