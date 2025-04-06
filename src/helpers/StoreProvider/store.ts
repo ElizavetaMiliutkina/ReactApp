@@ -8,9 +8,7 @@ import { StateSchema } from './StateSchema.ts';
 import { counterReducer } from '@/entities/Counter';
 import { userReducer } from '@/entities/User';
 import { $api } from "@/shared/api/api.ts";
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-expect-error
-import { N as NavigateOptions, T as To } from "react-router/dist/development/route-data-BmvbmBej";
+import { NavigateOptions, To } from "react-router-dom";
 
 // Функция для создания менеджера редюсеров
 const createReducerManager = (initialReducers: ReducersMapObject<StateSchema>) => {

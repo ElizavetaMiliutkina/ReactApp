@@ -11,11 +11,16 @@ const mockedAxios = axios as jest.Mocked<typeof axios>;
 describe('loginByUserName.test', () => {
     let dispatch: Dispatch;
     let getState: () => StateSchema;
+    let extra: { api: jest.Mocked<typeof axios>; navigate: jest.Mock };
 
     beforeEach(() => {
         dispatch = jest.fn();
         getState = jest.fn();
-    })
+        extra = {
+            api: mockedAxios, // Используем замоканный axios
+            navigate: jest.fn(), // Мокаем функцию navigate
+        };
+    });
 
     test('successful login returns user data', async () => {
         const userValue = { username: '123', id: '1' }
@@ -28,7 +33,7 @@ describe('loginByUserName.test', () => {
         const action = loginByUserName({ username: '123', password: '123' })
 
         // Example usage - assuming you have a login function to test
-        const result = await  action(dispatch, getState, undefined)
+        const result = await  action(dispatch, getState, extra)
 
         console.log(result)
 
@@ -46,7 +51,7 @@ describe('loginByUserName.test', () => {
 
         const action = loginByUserName({ username: '123', password: '123' })
 
-        const result = await  action(dispatch, getState, undefined)
+        const result = await  action(dispatch, getState, extra)
 
         console.log(result)
 
