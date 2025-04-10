@@ -1,10 +1,11 @@
 import { classNames } from '@/helpers/classNames/classNames';
-import { useTranslation } from 'react-i18next';
-import { useDispatch, useStore } from "react-redux";
+import { useDispatch, useSelector, useStore } from "react-redux";
 import { AppDispatch, AppStore } from "@/helpers/StoreProvider/store.ts";
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { loginActions } from "@/features/AuthByUserName/model/slice/loginSlice.ts";
-import { fetchProfileData, ProfileCard } from "@/entities/Profile";
+import { fetchProfileData, getProfileForm, getProfileReadonly, profileActions, ProfileCard } from "@/entities/Profile";
+import { getProfileError, getProfileIsLoading } from "@/entities/Profile/index.ts";
+import { ProfilePageHeader } from "@/pages/ProfilePage/ProfilePageHeader/ProfilePageHeader.tsx";
 
 export interface ProfileProps {
     className?: string;
@@ -15,10 +16,31 @@ const Profile = (props: ProfileProps) => {
         className = '',
     } = props;
 
-    const { t } = useTranslation();
-
     const dispatch = useDispatch<AppDispatch>();
     const store = useStore() as AppStore;
+
+    const data = useSelector(getProfileForm)
+    const error = useSelector(getProfileError)
+    const isLoading = useSelector(getProfileIsLoading)
+    const readonly = useSelector(getProfileReadonly)
+
+    const onChangeFirstName = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ first: value || '' }))
+    }, [dispatch])
+
+    const onChangeLastName = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ lastname: value || '' }))
+    }, [dispatch])
+
+
+    const onChangeAge = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ age: Number(value || 0) }))
+    }, [dispatch])
+
+
+    const onChangeCity = useCallback((value?: string) => {
+        dispatch(profileActions.updateProfile({ city: value || '' }))
+    }, [dispatch])
 
     useEffect(() => {
         // Асинхронно загружаем редюсер
@@ -44,8 +66,17 @@ const Profile = (props: ProfileProps) => {
 
     return (
         <div className={classNames('', {}, [className])} >
-            {t('Профиль')}
-            <ProfileCard/>
+            <ProfilePageHeader/>
+            <ProfileCard
+                data={data}
+                isLoading={isLoading}
+                error={error}
+                readonly={readonly}
+                onChangeFirstName={onChangeFirstName}
+                onChangeLastName={onChangeLastName}
+                onChangeAge={onChangeAge}
+                onChangeCity={onChangeCity}
+            />
         </div>
     );
 };

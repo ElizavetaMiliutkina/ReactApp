@@ -2,7 +2,8 @@ import axios from "axios";
 import { USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage.ts";
 
 // Используем process.env вместо import.meta.env
-const baseUrl = process.env.VITE_API_URL;
+const baseUrl = import.meta.env.VITE_API_URL
+console.log(baseUrl, 'baseUrl')
 
 export const $api = axios.create({
     baseURL: baseUrl,

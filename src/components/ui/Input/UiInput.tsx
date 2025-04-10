@@ -2,15 +2,21 @@ import { classNames } from '@/helpers/classNames/classNames';
 import cls from './UiInput.module.scss'
 import React, { InputHTMLAttributes, memo, useEffect, useRef, useState } from "react";
 
-type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
+type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
+
+export enum  InputTypes {
+    TEXT= 'text',
+    NUMBER = 'number',
+}
 
 export interface UiInputProps extends HTMLInputProps{
     className?: string;
-    type?:string;
-    value?:string;
+    type?:InputTypes;
+    value?:string | number;
     placeholder?:string;
     onChange?:(value: string) => void
     autofocus?: boolean
+    readonly?: boolean
 }
 
 export const UiInput = memo((props: UiInputProps) => {
@@ -18,19 +24,26 @@ export const UiInput = memo((props: UiInputProps) => {
         className = '',
         value,
         onChange,
-        type = 'text',
+        type = InputTypes.TEXT,
         placeholder,
         autofocus,
+        readonly,
         ...otherProps
     } = props;
     const [isFocus, setIsFocus] = useState(false)
     const [caretPosition, setCaretPosition] = useState(0)
 
+    const isCaretVisible = isFocus && !readonly
+
     const ref = useRef<HTMLInputElement>(null)
 
     const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        onChange?.(e.target.value);
-        setCaretPosition(e.target.value.length);
+        const newValue = e.target.value;
+        if (type === 'number' && !/^\d*$/.test(newValue)) {
+            return;
+        }
+        onChange?.(newValue);
+        setCaretPosition(newValue.length);
     }
 
 
@@ -53,8 +66,12 @@ export const UiInput = memo((props: UiInputProps) => {
         }
     }, [autofocus]);
 
+    const mods = {
+        [cls.readonly]: !!readonly
+    }
+
     return (
-        <div className={classNames(cls.InputWrapper, {}, [className])}>
+        <div className={classNames(cls.InputWrapper, mods, [className])}>
             {placeholder && (
                 <div className={cls.placeholder}>
                     {`${placeholder}>`}
@@ -69,9 +86,10 @@ export const UiInput = memo((props: UiInputProps) => {
                        onBlur={onBlur}
                        onFocus={onFocus}
                        onSelect={onSelect}
+                       readOnly={readonly}
                        {...otherProps}
                 />
-                {isFocus && (
+                {isCaretVisible && (
                     <span className={cls.caret}
                           style={{ left: `${caretPosition * 9}px` }}
                     />

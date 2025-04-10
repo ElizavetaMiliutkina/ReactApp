@@ -1,14 +1,7 @@
 .ProfileCard {
   padding: 20px;
-  border: 2px solid var(--inverted-bg-color)
-}
-
-.header {
-  display: flex;
-}
-
-.editBtn {
-  margin-left: auto;
+  border: 2px solid var(--inverted-bg-color);
+  text-align: justify;
 }
 
 .data {
@@ -17,4 +10,12 @@
 
 .input {
   margin-top: 10px;
+}
+
+.loading,
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
 }
