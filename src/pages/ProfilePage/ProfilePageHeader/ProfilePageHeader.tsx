@@ -4,7 +4,7 @@ import cls from './ProfilePageHeader.module.scss'
 import { UiText } from "@/components/ui/Text/UiText.tsx";
 import { themeButton, UiButton } from "@/components/ui/Button/UiButton.tsx";
 import { useDispatch, useSelector } from "react-redux";
-import { getProfileReadonly, profileActions } from "@/entities/Profile";
+import { getProfileReadonly, profileActions, updateProfileData } from "@/entities/Profile";
 import { AppDispatch } from "@/helpers/StoreProvider/store.ts";
 import { useCallback } from "react";
 
@@ -32,7 +32,8 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
     }, [dispatch])
 
     const onSave = useCallback(() => {
-        dispatch(profileActions.cancelEdit())
+        dispatch(updateProfileData())
+        dispatch(profileActions.setReadonly(true))
     }, [dispatch])
 
     return (

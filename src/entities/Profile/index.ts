@@ -5,6 +5,7 @@ export type {
 } from './model/types/profile.ts'
 
 export { fetchProfileData } from './services/fetchProfileData/fetchProfileData.ts'
+export { updateProfileData } from './services/updateProfileData/updateProfileData.ts'
 export { ProfileCard } from './ui/ProfileCard/ProfileCard.tsx'
 export { getProfileData } from './model/selectors/getProfileData/getProfileData.ts'
 export { getProfileError } from './model/selectors/getProfileError/getProfileError.ts'

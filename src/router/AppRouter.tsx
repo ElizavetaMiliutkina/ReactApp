@@ -10,7 +10,7 @@ const AppRouter = () => {
     return (
         <Suspense fallback={<div>Загрузка...</div>}>
             <Routes>
-                <Route path="/" element={<Dashboard/>}/>
+                <Route path="/" element={<Dashboard/>} />
                 <Route path="/dashboard" element={<Home/>}/>
                 <Route path="/profile" element={<Profile/>}/>
                 <Route path="*" element={<PageNotFound/>}/>

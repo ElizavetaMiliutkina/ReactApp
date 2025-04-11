@@ -6,6 +6,7 @@ import { loginActions } from "@/features/AuthByUserName/model/slice/loginSlice.t
 import { fetchProfileData, getProfileForm, getProfileReadonly, profileActions, ProfileCard } from "@/entities/Profile";
 import { getProfileError, getProfileIsLoading } from "@/entities/Profile/index.ts";
 import { ProfilePageHeader } from "@/pages/ProfilePage/ProfilePageHeader/ProfilePageHeader.tsx";
+import { Currency } from "@/entities/Currency"
 
 export interface ProfileProps {
     className?: string;
@@ -37,6 +38,9 @@ const Profile = (props: ProfileProps) => {
         dispatch(profileActions.updateProfile({ age: Number(value || 0) }))
     }, [dispatch])
 
+    const onChangeCurrency = useCallback((currency: Currency) => {
+        dispatch(profileActions.updateProfile({ currency }));
+    }, [dispatch]);
 
     const onChangeCity = useCallback((value?: string) => {
         dispatch(profileActions.updateProfile({ city: value || '' }))
@@ -76,6 +80,7 @@ const Profile = (props: ProfileProps) => {
                 onChangeLastName={onChangeLastName}
                 onChangeAge={onChangeAge}
                 onChangeCity={onChangeCity}
+                onChangeCurrency={onChangeCurrency}
             />
         </div>
     );

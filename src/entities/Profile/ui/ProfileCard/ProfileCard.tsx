@@ -5,6 +5,8 @@ import { TextAlign, TextTheme, UiText } from "@/components/ui/Text/UiText.tsx";
 import { UiInput, InputTypes } from "@/components/ui/Input/UiInput.tsx";
 import { Profile } from "../../model/types/profile.ts"
 import { UiLoader } from "@/components";
+import { UiAvatar } from "@/components/ui/Avatar/UiAvatar.tsx";
+import { Currency, CurrencySelect } from "@/entities/Currency";
 
 
 interface ProfileCardProps {
@@ -17,6 +19,7 @@ interface ProfileCardProps {
     onChangeLastName?: (value:  string) => void,
     onChangeAge?: (value:  string) => void,
     onChangeCity?: (value:  string) => void,
+    onChangeCurrency?: (currency:  Currency) => void,
 }
 
 export const ProfileCard = (props: ProfileCardProps) => {
@@ -29,7 +32,8 @@ export const ProfileCard = (props: ProfileCardProps) => {
         onChangeFirstName,
         onChangeLastName,
         onChangeAge,
-        onChangeCity
+        onChangeCity,
+        onChangeCurrency
     } = props;
 
     const { t } = useTranslation('profile');
@@ -40,6 +44,10 @@ export const ProfileCard = (props: ProfileCardProps) => {
                 <UiLoader/>
             </div>
         )
+    }
+
+    const mods = {
+        [cls.editing]: !readonly
     }
 
     if(error) {
@@ -56,21 +64,29 @@ export const ProfileCard = (props: ProfileCardProps) => {
     }
 
     return (
-        <div className={classNames(cls.ProfileCard, {}, [className])} >
+        <div className={classNames(cls.ProfileCard, mods, [className])} >
             <div className={cls.data}>
+                {data?.avatar && (
+                    <div className={cls.avatarWrapper}>
+                        <UiAvatar src={data.avatar} />
+                    </div>
+                )}
                 <UiInput
+                    className={cls.input}
                     value={data?.first}
                     placeholder={t('Ваше Имя')}
                     onChange={onChangeFirstName}
                     readonly={readonly}
                 />
                 <UiInput
+                    className={cls.input}
                     value={data?.lastname}
                     placeholder={t('Ваша Фамилия')}
                     onChange={onChangeLastName}
                     readonly={readonly}
                 />
                 <UiInput
+                    className={cls.input}
                     value={data?.age}
                     placeholder={t('Ваш возраст')}
                     onChange={onChangeAge}
@@ -78,9 +94,16 @@ export const ProfileCard = (props: ProfileCardProps) => {
                     readonly={readonly}
                 />
                 <UiInput
+                    className={cls.input}
                     value={data?.city}
                     placeholder={t('Ваш город')}
                     onChange={onChangeCity}
+                    readonly={readonly}
+                />
+                <CurrencySelect
+                    className={cls.input}
+                    value={data?.currency}
+                    onChange={onChangeCurrency}
                     readonly={readonly}
                 />
             </div>
