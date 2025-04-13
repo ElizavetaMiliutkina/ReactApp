@@ -1,17 +1,22 @@
 import { createAsyncThunk } from "@reduxjs/toolkit"
-import i18n from "i18next";
 import { ThunkConfig } from "@/helpers/StoreProvider/StateSchema.ts";
-import { Profile } from "../../model/types/profile.ts";
+import { Profile, ValidateProfileError } from "../../model/types/profile.ts";
 import { getProfileForm } from "@/entities/Profile";
+import { validateProfileData } from "@/entities/Profile/services/validateProfileData/validateProfileData.ts";
 
 
 export const updateProfileData = createAsyncThunk<Profile, void,
-    ThunkConfig<string>>(
+    ThunkConfig<ValidateProfileError[]>>(
     'profile/updateProfileData',
     async (_, thunkAPI) => {
         const { extra, rejectWithValue, getState } = thunkAPI;
 
         const formData = getProfileForm(getState())
+        const errors = validateProfileData(formData)
+
+        if(errors.length){
+         return rejectWithValue(errors)
+        }
 
         try {
             const response = await extra.api.put<Profile>('/profile', formData);
@@ -19,7 +24,7 @@ export const updateProfileData = createAsyncThunk<Profile, void,
             return response.data;
         } catch (e) {
             console.log('Profile fetch error:', e);
-            return rejectWithValue(i18n.t('Ошибка при загрузке профиля'));
+            return rejectWithValue([ValidateProfileError.SERVER_ERROR]);
         }
     },
 );

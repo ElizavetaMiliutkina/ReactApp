@@ -8,5 +8,9 @@
   "Отменить": "Cancel",
   "Сохранить": "Save",
   "При загрузке профиля произошла ошибка": "There was an error loading your profile",
-  "Попробуйте перезагрузить страницу": "Try reloading the page"
+  "Попробуйте перезагрузить страницу": "Try reloading the page",
+  "Сереверная ошибка при сохранении": "Server error saving",
+  "Некоректный возраст": "Incorrect age",
+  "Имя и фамилия обязательны": "First and last name are required",
+  "Данные не указаны": "No data specified"
 }
