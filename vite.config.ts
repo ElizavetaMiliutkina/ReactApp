@@ -34,8 +34,9 @@ export default defineConfig(({ mode }) => {
     },
     // Опционально: добавляем define для передачи переменных в код
     define: {
-      'process.env.IS_DEV': JSON.stringify(isDev), // Для совместимости с legacy-кодом
+      'process.env.IS_DEV': JSON.stringify(isDev),
       'process.env.API_URL': JSON.stringify(apiUrl),
+      'process.env.IS_STORYBOOK': JSON.stringify('false'),
     },
   };
 });

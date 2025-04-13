@@ -9,7 +9,7 @@ import { UiAvatar } from "@/components/ui/Avatar/UiAvatar.tsx";
 import { Currency, CurrencySelect } from "@/entities/Currency";
 
 
-interface ProfileCardProps {
+export interface ProfileCardProps {
     className?: string;
     data?: Profile | null;
     isLoading?: boolean,

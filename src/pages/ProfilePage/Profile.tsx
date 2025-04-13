@@ -65,6 +65,8 @@ const Profile = (props: ProfileProps) => {
         dispatch(profileActions.updateProfile({ city: value || '' }))
     }, [dispatch])
 
+    const isStorybook = process.env.IS_STORYBOOK === 'true';
+
     useEffect(() => {
         // Асинхронно загружаем редюсер
         import('@/entities/Profile/model/slice/profileSlice.ts').then((module) => {
@@ -84,8 +86,10 @@ const Profile = (props: ProfileProps) => {
 
 
     useEffect(() => {
-        dispatch(fetchProfileData())
-    }, [dispatch]);
+        if (!isStorybook) {
+            dispatch(fetchProfileData())
+        }
+    }, [isStorybook, dispatch]);
 
     return (
         <div className={classNames('', {}, [className])} >

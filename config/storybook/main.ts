@@ -15,10 +15,16 @@ const config: StorybookConfig = {
   },
   viteFinal: async (storybookConfig) => {
     const viteConfig = await loadConfigFromFile(
-        { mode: "production", command: "build" },
-        path.resolve(__dirname, "../../vite.config.ts")
+        { mode: 'production', command: 'build' },
+        path.resolve(__dirname, '../../vite.config.ts')
     );
-    return mergeConfig(storybookConfig, viteConfig?.config || {});
+    return mergeConfig(storybookConfig, {
+      ...viteConfig?.config,
+      define: {
+        ...viteConfig?.config.define,
+        'process.env.IS_STORYBOOK': JSON.stringify('true'),
+      },
+    });
   }
 };
 
