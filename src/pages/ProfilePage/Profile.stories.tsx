@@ -3,7 +3,7 @@ import Profile from "./Profile.tsx";
 import { ThemeDecorator } from "@/shared/config/storybook/themeDecorator/ThemeDecorator.tsx";
 import { Theme } from "@/shared/theme/ThemeContext.ts";
 import { StoreDecorator } from "@/shared/config/storybook/storeDecorator/StoreDecorator";
-import Avatar from "../../components/ui/Avatar/storybook.jpg"
+import Avatar from "@/components/ui/Avatar/storybook.jpg"
 
 const meta: Meta = {
     title: 'pages/Profile',

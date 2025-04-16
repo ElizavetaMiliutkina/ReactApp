@@ -10,10 +10,13 @@ export const fetchProfileData = createAsyncThunk<Profile, void, { rejectValue: s
         const { extra, rejectWithValue } = thunkAPI;
         try {
             const response = await extra.api.get<Profile>('/profile');
-            console.log('Profile response:', response.data);
+
+            if(!response.data) {
+                throw new Error()
+            }
+
             return response.data;
         } catch (e) {
-            console.log('Profile fetch error:', e);
             return rejectWithValue(i18n.t('Ошибка при загрузке профиля'));
         }
     },
