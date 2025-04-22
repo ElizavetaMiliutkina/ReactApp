@@ -12,7 +12,7 @@ export const ProtectedRoute = ({ element, authOnly }: ProtectedRouteProps) => {
     const auth = useSelector(getUserAuthData);
     if (authOnly && !auth) {
 
-        return <Navigate to="'/'" replace />;
+        return <Navigate to="/" replace />;
     }
     return <>{element}</>;
 };
