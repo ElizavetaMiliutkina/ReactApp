@@ -6,6 +6,8 @@ import { LangSwitcher } from "@/widgets/LangSwitcher/LangSwitcher.tsx";
 import { themeButton, sizeButton, UiButton } from "@/components/ui/Button/UiButton.tsx";
 import { SidebarItemsList } from "@/widgets/Sidebar/SidebarItem.ts";
 import { SidebarItem } from "@/widgets/Sidebar/SidebarItem/SidebarItem.tsx";
+import { useSelector } from "react-redux";
+import { getUserAuthData } from "@/entities/User/model/selectors/getUserAuthData/getUserAuthData.ts";
 
 export interface SidebarProps {
     className?: string;
@@ -27,12 +29,17 @@ export const Sidebar = memo((props: SidebarProps) => {
     console.log('SidebarItemsList:', SidebarItemsList);
     console.log('SidebarItem:', SidebarItem);
 
+    const auth = useSelector(getUserAuthData);
+
+    const filteredSidebarItems = SidebarItemsList.filter(
+        (item) => !item.authOnly || (item.authOnly && !!auth)
+    );
     return (
         <div data-testid={'sidebar'}
              className={classNames(cls.Sidebar, { [cls.collapsed]:collapsed }, [className])}
         >
             <div className={cls.items}>
-                {SidebarItemsList.map((item) => (
+                {filteredSidebarItems.map((item) => (
                     <SidebarItem
                         item={item}
                         collapsed={collapsed}
