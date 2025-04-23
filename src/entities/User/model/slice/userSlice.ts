@@ -3,7 +3,9 @@ import { User, UserSchema } from "../types/userSchema.ts";
 import { USER_LOCALSTORAGE_KEY } from "@/shared/const/localstorage.ts";
 
 
-const initialState: UserSchema = {}
+const initialState: UserSchema = {
+    _inited: false
+}
 
 export const userSlice = createSlice({
     name: 'user',
@@ -16,6 +18,7 @@ export const userSlice = createSlice({
             const user = localStorage.getItem(USER_LOCALSTORAGE_KEY)
             if(user) {
                 state.userData = JSON.parse(user)
+                state._inited = true
             }
         },
         logout:(state) => {

@@ -1,32 +1,41 @@
 import { Reducer } from '@reduxjs/toolkit';
 import { StateSchema } from './StateSchema.ts';
-export declare function createReduxStore(initialState?: StateSchema): {
+import { NavigateOptions, To } from "react-router-dom";
+export declare function createReduxStore(initialState?: StateSchema, navigate?: (to: To, options?: NavigateOptions) => void): {
     addReducer: (key: keyof StateSchema, reducer: Reducer) => void;
     removeReducer: (key: keyof StateSchema) => void;
     dispatch: import("redux-thunk").ThunkDispatch<{
         counter: import("@/entities/Counter").CounterSchema;
         user: import("@/entities/User").UserSchema;
-        loginForm?: import("../../features/AuthByUserName/index.ts").LoginSchema | undefined;
-    }, undefined, import("redux").UnknownAction> & import("redux").Dispatch<import("redux").UnknownAction>;
+        loginForm?: undefined;
+        profile?: undefined;
+    }, {
+        api: import("axios").AxiosInstance;
+        navigate: ((to: To, options?: NavigateOptions) => void) | undefined;
+    }, import("redux").UnknownAction> & import("redux").Dispatch<any>;
     getState(): {
         counter: import("@/entities/Counter").CounterSchema;
         user: import("@/entities/User").UserSchema;
-        loginForm?: import("../../features/AuthByUserName/index.ts").LoginSchema | undefined;
+        loginForm?: undefined;
+        profile?: undefined;
     };
     subscribe(listener: () => void): import("redux").Unsubscribe;
     replaceReducer(nextReducer: Reducer<{
         counter: import("@/entities/Counter").CounterSchema;
         user: import("@/entities/User").UserSchema;
-        loginForm?: import("../../features/AuthByUserName/index.ts").LoginSchema | undefined;
-    }, import("redux").UnknownAction, {
+        loginForm?: undefined;
+        profile?: undefined;
+    }, any, {
         counter: import("@/entities/Counter").CounterSchema;
         user: import("@/entities/User").UserSchema;
-        loginForm?: import("../../features/AuthByUserName/index.ts").LoginSchema | undefined;
+        loginForm?: undefined;
+        profile?: undefined;
     }>): void;
     [Symbol.observable](): import("redux").Observable<{
         counter: import("@/entities/Counter").CounterSchema;
         user: import("@/entities/User").UserSchema;
-        loginForm?: import("../../features/AuthByUserName/index.ts").LoginSchema | undefined;
+        loginForm?: undefined;
+        profile?: undefined;
     }>;
 };
 export type AppDispatch = ReturnType<typeof createReduxStore>['dispatch'];

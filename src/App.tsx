@@ -6,13 +6,15 @@ import { Sidebar } from "@/widgets/Sidebar/Sidebar.tsx";
 import { Suspense, useEffect } from "react";
 import { PageLoader } from "@/widgets/PageLoader/PageLoader.tsx";
 import { UiBugButton } from "@/components/index.tsx";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userActions } from "@/entities/User/model/slice/userSlice.ts";
+import { getUserInited } from "@/entities/User/index.ts";
 
 function App() {
     const { theme } = useTheme()
 
     const dispatch = useDispatch()
+    const inited = useSelector(getUserInited)
 
     useEffect(() => {
         dispatch(userActions.initAuthData())
@@ -26,7 +28,7 @@ function App() {
                     <Sidebar/>
                     <div className={'main-content'}>
                         <UiBugButton/>
-                        <AppRouter/>
+                        { inited &&  <AppRouter/> }
                     </div>
                 </div>
             </Suspense>

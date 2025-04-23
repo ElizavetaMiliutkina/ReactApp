@@ -5,5 +5,6 @@ export interface User {
 
 export interface UserSchema {
     userData?: User;
+    _inited:boolean
 }
 

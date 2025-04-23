@@ -2,6 +2,8 @@ import { lazy, ReactNode, Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { PageNotFound } from '@/pages/PageNotFound/PageNotFound.tsx';
 import Profile from '@/pages/ProfilePage/Profile.tsx';
+import Articles from '@/pages/Articles/Articles.async.ts';
+import ArticleDetails from '@/pages/ArticleDetails/ArticleDetails.async.ts';
 import { ProtectedRoute } from './ProtectedRouter.tsx';
 
 const Home = lazy(() => import('@/pages/Home/Home.tsx'));
@@ -17,6 +19,8 @@ const routes: RouteConfig[] = [
     { path: '/', element: <Dashboard />, authOnly: false },
     { path: '/dashboard', element: <Home />, authOnly: false },
     { path: '/profile', element: <Profile />, authOnly: true },
+    { path: '/articles', element: <Articles />, authOnly: true },
+    { path: '/article/:id', element: <ArticleDetails />, authOnly: true },
     { path: '*', element: <PageNotFound />, authOnly: false },
 ];
 

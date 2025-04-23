@@ -17,10 +17,30 @@ jest.mock('@/assets/main-20-20.svg', () => ({
 }));
 
 jest.mock('@/assets/about-20-20.svg', () => ({
-    ReactComponent: () => 'Mocked SVG Dark'
+    ReactComponent: () => 'Mocked SVG About'
 }));
 
 jest.mock('@/assets/profile-20-20.svg', () => ({
-    ReactComponent: () => 'Mocked SVG Dark'
+    ReactComponent: () => 'Mocked SVG Profile'
+}));
+
+jest.mock('@/assets/articles.svg', () => ({
+    ReactComponent: () => 'Mocked SVG Articles'
+}));
+
+jest.mock('@/assets/edit.svg', () => ({
+    ReactComponent: () => 'Mocked SVG Edit'
+}));
+
+jest.mock('@/assets/check.svg', () => ({
+    ReactComponent: () => 'Mocked SVG Check'
+}));
+
+jest.mock('@/assets/eye.svg', () => ({
+    ReactComponent: () => 'Mocked SVG Eye'
+}));
+
+jest.mock('@/assets/date.svg', () => ({
+    ReactComponent: () => 'Mocked SVG Date'
 }));
 
