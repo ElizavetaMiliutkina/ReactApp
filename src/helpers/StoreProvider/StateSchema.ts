@@ -2,6 +2,7 @@ import { CounterSchema } from "@/entities/Counter/model/types/counterSchema.ts";
 import { UserSchema } from "@/entities/User";
 import { LoginSchema } from "@/features/AuthByUserName";
 import { ProfileSchema } from "@/entities/Profile";
+import { ArticleDetailsSchema } from "@/entities/Article";
 import { AxiosInstance } from "axios";
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-expect-error
@@ -12,6 +13,7 @@ export interface StateSchema {
     user: UserSchema
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
+    article?: ArticleDetailsSchema;
 }
 
 export interface ThunkExtraArg {

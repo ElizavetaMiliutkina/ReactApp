@@ -1,0 +1,26 @@
+.UiSkeleton {
+  background-color: var(--skeleton-color);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.UiSkeleton::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150px;
+  height: 100%;
+  width: 150px;
+  background: linear-gradient(90deg, transparent, var(--skeleton-shadow), transparent);
+  animation: loading 1.2s infinite;
+}
+
+@keyframes loading {
+  0% {
+    left: -150px;
+  }
+  100% {
+    left: 100%;
+  }
+}

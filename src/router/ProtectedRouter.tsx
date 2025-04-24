@@ -10,7 +10,6 @@ interface ProtectedRouteProps {
 
 export const ProtectedRoute = ({ element, authOnly }: ProtectedRouteProps) => {
     const auth = useSelector(getUserAuthData);
-    console.log(authOnly, !auth, element)
     if (authOnly && !auth) {
 
         return <Navigate to="/" replace />;

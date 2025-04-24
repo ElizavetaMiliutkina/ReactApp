@@ -23,12 +23,6 @@ export const Sidebar = memo((props: SidebarProps) => {
         setCollapsed((prev) => !prev)
     }
 
-    console.log('ThemeSwitcher:', ThemeSwitcher);
-    console.log('LangSwitcher:', LangSwitcher);
-    console.log('UiButton:', UiButton);
-    console.log('SidebarItemsList:', SidebarItemsList);
-    console.log('SidebarItem:', SidebarItem);
-
     const auth = useSelector(getUserAuthData);
 
     const filteredSidebarItems = SidebarItemsList.filter(
