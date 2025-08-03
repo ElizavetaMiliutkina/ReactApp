@@ -3,6 +3,11 @@
   border-radius: 7px;
   padding: 4px 8px;
   background: transparent;
+
+  &:hover{
+    opacity: 0.7;
+    fill-opacity: 0.7;
+  }
 }
 
 .clear, .clearInverted {

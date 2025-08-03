@@ -19,7 +19,9 @@
       "img": "https://teknotower.com/wp-content/uploads/2020/11/js.png",
       "views": 1022,
       "createdAt": "26.02.2022",
-      "type": ["IT"],
+      "type": [
+        "IT"
+      ],
       "blocks": [
         {
           "id": "1",
@@ -133,7 +135,7 @@
     "lastname": "Милюткинa",
     "password": "123",
     "age": 27,
-    "currency": "RUB",
+    "currency": "EUR",
     "country": "Russia",
     "city": "Moscow",
     "username": "admin",

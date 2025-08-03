@@ -31,13 +31,10 @@ export const UiText = memo((props: TextProps) => {
         className = '',
         title,
         text,
-        theme = TextTheme.PRIMARY,
-        align = TextAlign.LEFT,
-        size = TextSize.M
     } = props;
 
     return (
-        <div className={classNames(cls.Text, { [cls[theme]]: true }, [className, cls[align], cls[size]])} >
+        <div className={classNames(cls.Text, {}, [className])} >
             {title && <p className={cls.title}>{title}</p>}
             {text && <p className={cls.text}>{text}</p>}
         </div>
